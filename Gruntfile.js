@@ -389,12 +389,21 @@ module.exports = function (grunt) {
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }, {
-                expand: true,
-                dot: true,
-                cwd: 'app/bower_components/fontawesome/fonts/',
-                src: ['*.*'],
-                dest: '<%= yeoman.dist %>/fonts'
-            }]
+          expand: true,
+          dot: true,
+          cwd: 'bower_components/font-awesome/fonts/',
+          src: ['*.*'],
+          dest: '<%= yeoman.dist %>/fonts'
+        }]
+      },
+      app: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: 'bower_components/font-awesome/fonts/',
+          src: ['*.*'],
+          dest: '<%= yeoman.app %>/fonts'
+        }]
       },
       styles: {
         expand: true,
@@ -437,6 +446,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'copy:app',
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
